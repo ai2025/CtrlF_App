@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <TextView
+        android:id="@+id/tvNamaProfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Hello, Jane Doe"
+        android:textSize="12pt"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layConsChip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:paddingBottom="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamaProfil">
+
+        <ImageView
+            android:id="@+id/ivChip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chipbg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivLiness"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:src="@drawable/liness"
+            app:layout_constraintBottom_toBottomOf="@+id/ivChip"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivChip" />
+
+        <ImageView
+            android:id="@+id/ivCal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/cal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivLiness"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivCalo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/calo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCal1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="helvetica"
+            android:text="1500 KCal"
+            android:textSize="9pt"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivLiness"
+            app:layout_constraintStart_toEndOf="@+id/ivCalo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCal2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="helvetica"
+            android:text="500 KCal"
+            android:textSize="9pt"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivCal"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layConsChip">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/btn_rounded_smol"
+                android:backgroundTint="#6BE39797"
+                android:paddingStart="25dp"
+                android:paddingTop="25dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="25dp">
+
+                <ImageView
+                    android:id="@+id/ivEmail"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvEmailProfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="doejane@lorem.ip"
+                    android:textColor="#1B1B1B"
+                    android:textSize="9pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivEmail"
+                    app:layout_constraintStart_toEndOf="@+id/ivEmail"
+                    app:layout_constraintTop_toTopOf="@+id/ivEmail" />
+
+                <View
+                    android:id="@+id/div1"
+                    style="@style/Divider"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivEmail" />
+
+                <ImageView
+                    android:id="@+id/ivPass"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/password"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/div1" />
+
+                <TextView
+                    android:id="@+id/tvPassProfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="********"
+                    android:textColor="#1B1B1B"
+                    android:textSize="9pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivPass"
+                    app:layout_constraintStart_toEndOf="@+id/ivPass"
+                    app:layout_constraintTop_toTopOf="@+id/ivPass" />
+
+                <View
+                    android:id="@+id/div2"
+                    style="@style/Divider"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivPass" />
+
+                <ImageView
+                    android:id="@+id/ivBday"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/birthdaycandle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/div2" />
+
+                <TextView
+                    android:id="@+id/tvBdayProfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="22 yo"
+                    android:textColor="#1B1B1B"
+                    android:textSize="9pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivBday"
+                    app:layout_constraintStart_toEndOf="@+id/ivBday"
+                    app:layout_constraintTop_toTopOf="@+id/ivBday" />
+
+                <View
+                    android:id="@+id/div3"
+                    style="@style/Divider"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivBday" />
+
+                <ImageView
+                    android:id="@+id/ivHeight"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/heightlimit"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/div3" />
+
+                <TextView
+                    android:id="@+id/tvHeightProfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="170 cm"
+                    android:textColor="#1B1B1B"
+                    android:textSize="9pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivHeight"
+                    app:layout_constraintStart_toEndOf="@+id/ivHeight"
+                    app:layout_constraintTop_toTopOf="@+id/ivHeight" />
+
+                <View
+                    android:id="@+id/div4"
+                    style="@style/Divider"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivHeight" />
+
+                <ImageView
+                    android:id="@+id/ivWeight"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/weightscale"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/div4" />
+
+                <TextView
+                    android:id="@+id/tvWeightProfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="55 kg"
+                    android:textColor="#1B1B1B"
+                    android:textSize="9pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivWeight"
+                    app:layout_constraintStart_toEndOf="@+id/ivWeight"
+                    app:layout_constraintTop_toTopOf="@+id/ivWeight" />
+
+                <View
+                    android:id="@+id/div5"
+                    style="@style/Divider"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ivWeight" />
+
+                <ImageView
+                    android:id="@+id/ivAct"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/danceroutline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/div5" />
+
+                <TextView
+                    android:id="@+id/tvActProfil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="Bekerja"
+                    android:textColor="#1B1B1B"
+                    android:textSize="9pt"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivAct"
+                    app:layout_constraintStart_toEndOf="@+id/ivAct"
+                    app:layout_constraintTop_toTopOf="@+id/ivAct" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailResepActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhiteBG"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/ivResep"
+            android:layout_width="65pt"
+            android:layout_height="65pt"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/pancake" />
+
+        <TextView
+            android:id="@+id/tvNamaResep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="helvetica"
+            android:maxEms="6"
+            android:singleLine="false"
+            android:text="Pancake Gluten free, rendah gula dan kalori"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12pt"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/ivResep"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvKaloriResep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:fontFamily="helvetica"
+            android:text="Kalori: 1234 KCal"
+            android:textColor="@color/colorPrimary"
+            android:textSize="10pt"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/ivResep"
+            app:layout_constraintTop_toBottomOf="@+id/tvNamaResep" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View style="@style/Divider" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvBahanResep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="helvetica"
+                android:text="Bahan 1:\n1. Dummy 1
+                \n2. Dummy 2\n1. Dummy 1\n2. Dummy 2
+                \n1. Dummy 1\n2. Dummy 2\n1. Dummy 1\n2. Dummy 2"
+                android:textColor="@android:color/black"
+                android:textSize="8pt" />
+
+            <View style="@style/Divider" />
+
+            <TextView
+                android:id="@+id/tvLangkahResep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="helvetica"
+                android:text="Langkah 1:
+                \n1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                \n2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                \n3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                \n4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                \n1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                \n2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                \n3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                \n4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                \n1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                \n2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                \n3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                \n4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                \n1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                \n2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                \n3. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                \n4. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                android:textColor="@android:color/black"
+                android:textSize="8pt" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

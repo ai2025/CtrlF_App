@@ -9,12 +9,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".ProfileActivity"
+            android:label="Profile"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppThemeAllAcc">
+
+        </activity>
+        <activity
+            android:name=".DetailResepActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppThemeUngu">
+
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:theme="@style/AppThemeNoTitleBarSignup">
+
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppThemeNoTitleBar">
+
+        </activity>
+        <activity
+            android:name=".SplashScreenActivity"
+            android:theme="@style/AppThemeNoTitleBarAcc">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="List Resep"
+            android:theme="@style/AppThemeAllAcc">
+
         </activity>
     </application>
 

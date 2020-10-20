@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SignUpActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layConsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/tvTitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="helvetica"
+            android:text="Create"
+            android:textColor="@color/colorAccent"
+            android:textSize="16pt"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="helvetica"
+            android:text="Account"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15pt"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle1" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/person_add" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edtNameSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:fontFamily="helvetica"
+                android:hint="Name"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/edtAgeSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:fontFamily="helvetica"
+                android:hint="Age"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/edtHeightSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:fontFamily="helvetica"
+                android:hint="Height"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/edtWeightSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:fontFamily="helvetica"
+                android:hint="Weight"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/edtDaActSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:fontFamily="helvetica"
+                android:hint="Daily Activities"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/edtEmailSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:fontFamily="helvetica"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/edtPassSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:fontFamily="helvetica"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/edtConfPassSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:fontFamily="helvetica"
+                android:hint="Confirm Password"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/btnSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/btn_rounded"
+                android:fontFamily="helvetica"
+                android:onClick="btnSignupAct"
+                android:text="Sign Up"
+                android:textColor="@android:color/white"
+                android:textSize="9pt"
+                android:textStyle="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layConsLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/tvLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="helvetica"
+                    android:onClick="btnLoginAct"
+                    android:text="Log in"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="8pt"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvKetLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="3dp"
+                    android:fontFamily="helvetica"
+                    android:text="Already have an account?"
+                    android:textSize="8pt"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/tvLogin"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
