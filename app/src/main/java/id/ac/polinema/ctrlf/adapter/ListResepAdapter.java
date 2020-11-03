@@ -1,7 +1,6 @@
 package id.ac.polinema.ctrlf.adapter;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,33 +12,39 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import id.ac.polinema.ctrlf.R;
-import id.ac.polinema.ctrlf.model.Resep;
+import id.ac.polinema.ctrlf.model.Recipe;
 
 public class ListResepAdapter extends RecyclerView.Adapter<ListResepAdapter.ViewHolder> {
 
     private static final int IV_LEFT = 1;
     private static final int IV_RIGHT = 2;
-    private Context context;
-    private List<Resep> items;
+    //    final private ListItemListener itemListener;
+//    private Context context;
+    private ArrayList<Recipe> items;
 
-    public ListResepAdapter(Context context, List<Resep> items) {
-        this.context = context;
+    //    public ListResepAdapter(ArrayList<Recipe> items, ListItemListener itemListener) {
+//        this.items = items;
+//        this.itemListener = itemListener;
+//    }
+    public ListResepAdapter(ArrayList<Recipe> items) {
         this.items = items;
+
     }
 
     @NonNull
     @Override
     public ListResepAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//        View v = LayoutInflater.from(parent.getContext())
         View v = null;
         if (viewType == IV_LEFT) {
-            v = LayoutInflater.from(context).inflate(R.layout.item_list, parent, false);
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
         } else if (viewType == IV_RIGHT) {
-            v = LayoutInflater.from(context).inflate(R.layout.item_list_rev, parent, false);
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_rev, parent, false);
         }
-        return new ListResepAdapter.ViewHolder(v);
+        return new ViewHolder(v);
     }
 
     @Override
@@ -50,16 +55,26 @@ public class ListResepAdapter extends RecyclerView.Adapter<ListResepAdapter.View
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ListResepAdapter.ViewHolder holder, int position) {
-        Resep r = items.get(position);
-        holder.tvNamaResepList.setText(r.getNamaResep());
-        holder.tvKaloriResepList.setText("Kalori : " + r.getKaloriResep() + " KCal");
-        Picasso.get().load(r.getImgResep()).into(holder.ivResepList);
+        Recipe r = items.get(position);
+        holder.tvNamaResepList.setText(r.getLabel());
+        holder.tvKaloriResepList.setText("Kalori : " + r.getCalories().toString() + " KCal");
+        String path = r.getImage();
+        Picasso.get().load(path).into(holder.ivResepList);
     }
 
     @Override
     public int getItemCount() {
         return (items != null) ? items.size() : 0;
     }
+
+//    @Override
+//    public void onClick(View v) {
+//
+//    }
+//
+//    interface ListItemListener{
+//        void onListItemClick(int position);
+//    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
