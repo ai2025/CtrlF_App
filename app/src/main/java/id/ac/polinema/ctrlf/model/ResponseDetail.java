@@ -3,10 +3,9 @@ package id.ac.polinema.ctrlf.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class Recipe implements Serializable {
+public class ResponseDetail {
 
     @SerializedName("uri")
     @Expose
@@ -29,6 +28,9 @@ public class Recipe implements Serializable {
     @SerializedName("yield")
     @Expose
     private Double yield;
+    @SerializedName("dietLabels")
+    @Expose
+    private List<String> dietLabels = null;
     @SerializedName("healthLabels")
     @Expose
     private List<String> healthLabels = null;
@@ -50,13 +52,6 @@ public class Recipe implements Serializable {
     @SerializedName("totalNutrients")
     @Expose
     private TotalNutrients totalNutrients;
-
-    public Recipe(String label, double calories, String image, String uri) {
-        this.label = label;
-        this.calories = calories;
-        this.image = image;
-        this.uri = uri;
-    }
 
     public String getUri() {
         return uri;
@@ -112,6 +107,14 @@ public class Recipe implements Serializable {
 
     public void setYield(Double yield) {
         this.yield = yield;
+    }
+
+    public List<String> getDietLabels() {
+        return dietLabels;
+    }
+
+    public void setDietLabels(List<String> dietLabels) {
+        this.dietLabels = dietLabels;
     }
 
     public List<String> getHealthLabels() {

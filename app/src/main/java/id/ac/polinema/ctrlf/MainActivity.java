@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<Recipe> recipes;
     ListResepAdapter adp;
-    String nama, foto;
+    String nama, foto, uri;
     double kalori;
 
     EditText edtSearch;
@@ -111,8 +111,9 @@ public class MainActivity extends AppCompatActivity {
                         nama = response.body().getHits().get(i).getRecipe().getLabel();
                         kalori = response.body().getHits().get(i).getRecipe().getCalories();
                         foto = response.body().getHits().get(i).getRecipe().getImage();
+                        uri = response.body().getHits().get(i).getRecipe().getUri();
                         a = (int) Math.round(kalori);
-                        recipes.add(new Recipe(nama, a, foto));
+                        recipes.add(new Recipe(nama, a, foto, uri));
                         adp.notifyDataSetChanged();
                     }
 
@@ -140,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 alert.setCancelable(true);
+                                loading.setVisibility(View.GONE);
                             }
                         })
                         .setCancelable(false);
