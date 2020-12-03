@@ -24,7 +24,7 @@
     </style>
 
     <!-- No title bar-->
-    <style name="AppThemeNoTitleBarSignup" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppThemeNoTitleBarSignup" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>

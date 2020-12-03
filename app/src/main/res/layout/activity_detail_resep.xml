@@ -17,189 +17,196 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ProgressBar
-                android:id="@+id/loadingDetail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:indeterminate="true"
-                android:max="1000"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/chip1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/bg_br_purple"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/ivFotoDetResep"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/pancake" />
+                android:layout_height="match_parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layConsDet1Txt"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/chip1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@+id/ivFotoDetResep"
-                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_br_purple"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/tvNamaDetResep"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="helvetica"
-                        android:maxEms="7"
-                        android:singleLine="false"
-                        android:text="Pancake Gluten free, rendah gula dan kalori"
-                        android:textColor="@android:color/secondary_text_light"
-                        android:textSize="12pt"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
                     <ImageView
-                        android:id="@+id/ivLine"
+                        android:id="@+id/ivFotoDetResep"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/pancake" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layConsDet1Txt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/linehori"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tvNamaDetResep" />
+                        android:layout_margin="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@+id/ivFotoDetResep"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tvNamaDetResep"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="helvetica"
+                            android:maxEms="7"
+                            android:singleLine="false"
+                            android:text="Pancake Gluten free, rendah gula dan kalori"
+                            android:textColor="@android:color/secondary_text_light"
+                            android:textSize="12pt"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/ivLine"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/linehori"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvNamaDetResep" />
+
+                        <TextView
+                            android:id="@+id/tvKaloriDetResep"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="helvetica"
+                            android:singleLine="false"
+                            android:text="Kalori: 123 KCal"
+                            android:textColor="@android:color/secondary_text_light"
+                            android:textSize="7pt"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ivLine" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/chip2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/bg_smol_ungu"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chip1">
 
                     <TextView
-                        android:id="@+id/tvKaloriDetResep"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
                         android:fontFamily="helvetica"
-                        android:singleLine="false"
-                        android:text="Kalori: 123 KCal"
-                        android:textColor="@android:color/secondary_text_light"
-                        android:textSize="7pt"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ivLine" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:text="Nutrisi:"
+                        android:textColor="@android:color/white"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvNutrisiDetResep"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="helvetica"
+                        android:text="1. Dummy 1
+                \n2. Dummy 2\n1. Dummy 1\n2. Dummy 2
+                \n1. Dummy 1\n2. Dummy 2\n1. Dummy 1\n2. Dummy 2"
+                        android:textColor="@android:color/white"
+                        android:textSize="8.5pt" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/chip3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/bg_smol_biruungu"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chip2">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="helvetica"
+                        android:text="Bahan:"
+                        android:textColor="@android:color/white"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvBahanDetResep"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="40dp"
+                        android:fontFamily="helvetica"
+                        android:text="1. Dummy 1
+                \n2. Dummy 2\n1. Dummy 1\n2. Dummy 2
+                \n1. Dummy 1\n2. Dummy 2\n1. Dummy 1\n2. Dummy 2"
+                        android:textColor="@android:color/white"
+                        android:textSize="8.5pt" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnLinkInstruksi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="18dp"
+                    android:background="@drawable/btn_rounded_stroke"
+                    android:fontFamily="helvetica"
+                    android:paddingLeft="60dp"
+                    android:paddingRight="60dp"
+                    android:text="Mari Memasak!"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="10pt"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/chip3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chip3" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
-                android:id="@+id/chip2"
+            <RelativeLayout
+                android:id="@+id/loadingDetail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/bg_smol_ungu"
-                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:background="#9A1B1B1B"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chip1">
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:layout_width="match_parent"
+                <ProgressBar
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:fontFamily="helvetica"
-                    android:text="Nutrisi:"
-                    android:textColor="@android:color/white"
-                    android:textSize="10pt"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvNutrisiDetResep"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="helvetica"
-                    android:text="1. Dummy 1
-                \n2. Dummy 2\n1. Dummy 1\n2. Dummy 2
-                \n1. Dummy 1\n2. Dummy 2\n1. Dummy 1\n2. Dummy 2"
-                    android:textColor="@android:color/white"
-                    android:textSize="8.5pt" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/chip3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/bg_smol_biruungu"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chip2">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:fontFamily="helvetica"
-                    android:text="Bahan:"
-                    android:textColor="@android:color/white"
-                    android:textSize="10pt"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvBahanDetResep"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="40dp"
-                    android:fontFamily="helvetica"
-                    android:text="1. Dummy 1
-                \n2. Dummy 2\n1. Dummy 1\n2. Dummy 2
-                \n1. Dummy 1\n2. Dummy 2\n1. Dummy 1\n2. Dummy 2"
-                    android:textColor="@android:color/white"
-                    android:textSize="8.5pt" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btnLinkInstruksi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_rounded_stroke"
-                android:fontFamily="helvetica"
-                android:paddingLeft="60dp"
-                android:paddingRight="60dp"
-                android:text="Mari Memasak!"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="10pt"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/chip3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chip3" />
-
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
-
 </LinearLayout>

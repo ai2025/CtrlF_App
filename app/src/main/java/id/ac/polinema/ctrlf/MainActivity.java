@@ -1,13 +1,18 @@
 package id.ac.polinema.ctrlf;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -23,6 +28,7 @@ import id.ac.polinema.ctrlf.adapter.ListResepAdapter;
 import id.ac.polinema.ctrlf.helper.ServiceGeneratorResep;
 import id.ac.polinema.ctrlf.model.Recipe;
 import id.ac.polinema.ctrlf.model.ResponseRecipe;
+import id.ac.polinema.ctrlf.model.Session;
 import id.ac.polinema.ctrlf.service.ApiInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     String q = "";
 
+    Session session = Application.getSession();
     ArrayList<Recipe> recipes;
     ListResepAdapter adp;
     String nama, foto, uri;
@@ -54,40 +61,52 @@ public class MainActivity extends AppCompatActivity {
 
         edtSearch = findViewById(R.id.edtSearchRecipe);
         loading = findViewById(R.id.loading);
-
         recipes = new ArrayList<>();
-
         rv = findViewById(R.id.rv_resep);
         RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
         rv.setLayoutManager(lm);
-
         adp = new ListResepAdapter(recipes);
         rv.setAdapter(adp);
-
-        loading.setVisibility(View.VISIBLE);
-
         edtSearch.setText("");
-
         getRecipeData("soup");
 
-//        RecyclerView rv = findViewById(R.id.rv_resep);
-//
-//        List<Resep> resepList = new ArrayList<>();
-//        resepList.add(new Resep("https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/360px-Liverpool_FC.svg.png", "Burger banyak kalorinyaa", "1234"));
-//        resepList.add(new Resep("https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/360px-Liverpool_FC.svg.png", "Burger banyak kalorinyaa", "1234"));
-//        resepList.add(new Resep("https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/360px-Liverpool_FC.svg.png", "Burger banyak kalorinyaa", "1234"));
-//        resepList.add(new Resep("https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/360px-Liverpool_FC.svg.png", "Burger banyak kalorinyaa", "1234"));
-//
-//        ListResepAdapter adp = new ListResepAdapter(this, resepList);
-//        rv.setAdapter(adp);
-//
-//        RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
-//        rv.setLayoutManager(lm);
+        if(session.isFirstTime()){
+            Intent i = new Intent(this, LoginActivity.class);
+            session.setFirstTime();
+            startActivity(i);
+        }
+        edtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    String tq = edtSearch.getText().toString();
+                    recipes.clear();
+                    hideSoftKeyboard(MainActivity.this);
+                    getRecipeData(tq);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     private void getRecipeData(String tq) {
+        loading.setVisibility(View.VISIBLE);
         if (!tq.isEmpty()) {
             q = tq;
+        }else{
+            final AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+            alert.setTitle("Notification")
+                    .setMessage("Search is empty!!")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            alert.setCancelable(true);
+                            loading.setVisibility(View.GONE);
+                        }
+                    })
+                    .setCancelable(false);
+            alert.show();
         }
         Map<String, String> data = new HashMap<>();
         data.put("app_id", APP_ID);
@@ -98,15 +117,12 @@ public class MainActivity extends AppCompatActivity {
         data.put("calories", CAL_RANGE);
 
         ApiInterface service = ServiceGeneratorResep.createService(ApiInterface.class);
-//        Call<ResponseRecipe>
         Call<ResponseRecipe> call = service.getRecipes(data);
         call.enqueue(new Callback<ResponseRecipe>() {
             @Override
             public void onResponse(Call<ResponseRecipe> call, Response<ResponseRecipe> response) {
                 if (response.isSuccessful()) {
                     int a = 0;
-                    //                        ArrayList<Hit> hits = (ArrayList<Hit>) response.body().getHits();
-//                        ResponseRecipe
                     for (int i = 0; i < response.body().getHits().size(); i++) {
                         nama = response.body().getHits().get(i).getRecipe().getLabel();
                         kalori = response.body().getHits().get(i).getRecipe().getCalories();
@@ -170,11 +186,25 @@ public class MainActivity extends AppCompatActivity {
     public void onSearch(View view) {
         String tq = edtSearch.getText().toString();
         recipes.clear();
+        hideSoftKeyboard(this);
         getRecipeData(tq);
     }
 
-    //    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menus, menu);
-//    }
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager)
+                activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
 }

@@ -50,7 +50,6 @@
                 android:text="Kalori: 123 KCal"
                 android:textAlignment="textEnd"
                 android:textSize="9pt"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvNamaResepList" />

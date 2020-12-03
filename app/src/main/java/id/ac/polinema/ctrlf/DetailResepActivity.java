@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -21,21 +23,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import id.ac.polinema.ctrlf.helper.ServiceGeneratorAuth;
 import id.ac.polinema.ctrlf.helper.ServiceGeneratorResep;
+import id.ac.polinema.ctrlf.model.Auth.AddCaloriesReq;
+import id.ac.polinema.ctrlf.model.Auth.ProfileResponse;
 import id.ac.polinema.ctrlf.model.Recipe;
+import id.ac.polinema.ctrlf.model.Session;
 import id.ac.polinema.ctrlf.model.TotalNutrients;
 import id.ac.polinema.ctrlf.service.ApiInterface;
+import id.ac.polinema.ctrlf.service.ProfileApiInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetailResepActivity extends AppCompatActivity {
-
+    Session session = Application.getSession();
     private static final String APP_ID = "325caf67";
     private static final String APP_KEY = "6b700ecdf15d251870d4460eff2b7716";
-    //    Recipe r;
-    String url;
-    ProgressBar loadingDetail;
+
+    String url, edamamLink, recipeName;
+    int calories;
+    RelativeLayout loadingDetail;
     TextView tvNamaDetResep, tvKaloriDetResep, tvNutrisiDetResep, tvBahanDetResep;
     ImageView ivFoto;
     Button btnCook;
@@ -63,13 +71,9 @@ public class DetailResepActivity extends AppCompatActivity {
         if (ab != null) {
             ab.setHomeButtonEnabled(true);
             ab.setDisplayHomeAsUpEnabled(true);
-//            ab.setTitle("Pancake enyaaakk");
         }
 
-//        Intent i = getIntent();
-//        Recipe recipe = (Recipe) getIntent().getSerializableExtra("urii");
         String recipe = (String) getIntent().getSerializableExtra("urii");
-//        r = recipe;
         getRecipeDetails(recipe);
     }
 
@@ -88,13 +92,15 @@ public class DetailResepActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Recipe re = response.body().get(0);
                     url = re.getUrl();
-                    tvNamaDetResep.setText(re.getLabel());
-                    tvKaloriDetResep.setText(String.valueOf(Math.round(re.getCalories())));
+                    edamamLink = re.getShareAs();
+                    calories = (int) Math.round(re.getCalories());
+                    recipeName = re.getLabel();
+
+                    tvNamaDetResep.setText(recipeName);
+                    tvKaloriDetResep.setText(String.valueOf(calories));
                     Picasso.get().load(re.getImage()).into(ivFoto);
 
                     String nutrition, energy, fat, carbs, fiber, sugar, protein, cholesterol, calcium, water;
-                    //                        ArrayList<Hit> hits = (ArrayList<Hit>) response.body().getHits();
-//                        ResponseRecipe
                     TotalNutrients tn = re.getTotalNutrients();
                     energy = tn.getENERCKCAL().getLabel() + ": "
                             + Math.round(tn.getENERCKCAL().getQuantity())
@@ -141,6 +147,7 @@ public class DetailResepActivity extends AppCompatActivity {
                     }
                     tvBahanDetResep.setText(temp);
 
+                    loadingDetail.setVisibility(View.GONE);
                     final AlertDialog.Builder alert = new AlertDialog.Builder(DetailResepActivity.this);
                     alert.setTitle("Notification")
                             .setMessage("Your data have been succesfully loaded")
@@ -148,7 +155,6 @@ public class DetailResepActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     alert.setCancelable(true);
-                                    loadingDetail.setVisibility(View.GONE);
                                 }
                             })
                             .setCancelable(false);
@@ -160,6 +166,9 @@ public class DetailResepActivity extends AppCompatActivity {
                             Uri uri = Uri.parse(url);
                             Intent in = new Intent(Intent.ACTION_VIEW, uri);
                             startActivity(in);
+                            if (session.isLoggedIn()) {
+                                doSaveCalories();
+                            }
                         }
                     });
                 }
@@ -170,18 +179,49 @@ public class DetailResepActivity extends AppCompatActivity {
                 t.getMessage();
                 System.out.println("Error");
                 Log.d("retrofit", "error", t);
-//                final AlertDialog.Builder alert = new AlertDialog.Builder(DetailResepActivity.this);
-//                alert.setTitle("Notification")
-//                        .setMessage("Check your internet connection!")
-//                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                alert.setCancelable(true);
-//                                loadingDetail.setVisibility(View.GONE);
-//                            }
-//                        })
-//                        .setCancelable(false);
-//                alert.show();
+            }
+        });
+    }
+
+    private void doSaveCalories() {
+        final AlertDialog.Builder alert = new AlertDialog.Builder(DetailResepActivity.this);
+        alert.setTitle("Konfirmasi Masakan")
+                .setMessage("Apakah anda sudah membuat masakan ini?")
+                .setPositiveButton("Sudah", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        loadingDetail.setVisibility(View.VISIBLE);
+                        addCalories();
+                    }})
+                .setNegativeButton("Belum", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                    }});
+        alert.show();
+    }
+
+    private void addCalories() {
+        ProfileApiInterface service = ServiceGeneratorAuth.createService(ProfileApiInterface.class);
+        AddCaloriesReq acr = new AddCaloriesReq(session.getLoginInfo(), recipeName, calories, edamamLink);
+        Call<ProfileResponse> call = service.doAddCalories(acr);
+        call.enqueue(new Callback<ProfileResponse>() {
+            @Override
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                if(response.isSuccessful()){
+                    loadingDetail.setVisibility(View.GONE);
+                    Toast.makeText(DetailResepActivity.this,
+                            calories + " kalori ditambahkan", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(DetailResepActivity.this, "Apps is crashed!", Toast.LENGTH_SHORT).show();
+                    Log.d("ERROR API", "check log!");
+                    System.exit(1);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+                Toast.makeText(DetailResepActivity.this, "Gagal Menambah Kalori", Toast.LENGTH_SHORT).show();
             }
         });
     }

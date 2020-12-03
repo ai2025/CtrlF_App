@@ -38,7 +38,6 @@
                 android:layout_height="wrap_content"
                 android:text="Kalori: 123 KCal"
                 android:textSize="9pt"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvNamaResepList" />
 
